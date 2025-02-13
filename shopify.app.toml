@@ -32,5 +32,5 @@ redirect_urls = [
   "https://intended-bored-james-equivalent.trycloudflare.com/api/auth/callback"
 ]
 
-[pos]
+[pos] 
 embedded = false
