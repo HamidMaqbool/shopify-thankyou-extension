@@ -21,7 +21,7 @@ function Extension() {
   const instructions = useInstructions();
   const applyAttributeChange = useApplyAttributeChange();
 
-console.log('yahoo');
+console.log('yahooss');
   // 2. Check instructions for feature availability, see https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions for details
   if (!instructions.attributes.canUpdateAttributes) {
     // For checkouts such as draft order invoices, cart attributes may not be allowed
@@ -38,7 +38,7 @@ console.log('yahoo');
     <BlockStack border={"dotted"} padding={"tight"}>
       <Banner title="checkout-ui">
         {translate("welcome", {
-          target: <Text emphasis="italic">{extension.target}ddd</Text>,
+          target: <Text emphasis="italic">{extension.target}ddsssssd</Text>,
         })}
       </Banner>
       <Checkbox onChange={onCheckboxChange}>
