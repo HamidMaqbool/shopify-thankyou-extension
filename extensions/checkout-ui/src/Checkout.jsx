@@ -1,26 +1,59 @@
 import {
-  BlockStack,
   reactExtension,
+  Banner,
+  BlockStack,
+  Checkbox,
   Text,
   useApi,
-} from '@shopify/ui-extensions-react/checkout';
+  useApplyAttributeChange,
+  useInstructions,
+  useTranslate,
+} from "@shopify/ui-extensions-react/checkout";
 
 // 1. Choose an extension target
-export default reactExtension(
-  'purchase.thank-you.footer.render-after',
-  () => <Extension />,
-);
+export default reactExtension("purchase.checkout.block.render", () => (
+  <Extension />
+));
 
 function Extension() {
-  // 2. Use the extension API to gather context from the checkout and shop
-  const {cost, shop} = useApi();
+  const translate = useTranslate();
+  const { extension } = useApi();
+  const instructions = useInstructions();
+  const applyAttributeChange = useApplyAttributeChange();
+
+console.log('yahoo');
+  // 2. Check instructions for feature availability, see https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions for details
+  if (!instructions.attributes.canUpdateAttributes) {
+    // For checkouts such as draft order invoices, cart attributes may not be allowed
+    // Consider rendering a fallback UI or nothing at all, if the feature is unavailable
+    return (
+      <Banner title="checkout-ui" status="warning">
+        {translate("attributeChangesAreNotSupported")}
+      </Banner>
+    );
+  }
 
   // 3. Render a UI
   return (
-    <BlockStack>
-      <Text>Shop name: {shop.name}</Text>
-      <Text>cost: {cost.totalAmount}</Text>
+    <BlockStack border={"dotted"} padding={"tight"}>
+      <Banner title="checkout-ui">
+        {translate("welcome", {
+          target: <Text emphasis="italic">{extension.target}ddd</Text>,
+        })}
+      </Banner>
+      <Checkbox onChange={onCheckboxChange}>
+        {translate("iWouldLikeAFreeGiftWithMyOrder")}
+      </Checkbox>
     </BlockStack>
   );
+
+  async function onCheckboxChange(isChecked) {
+    // 4. Call the API to modify checkout
+    const result = await applyAttributeChange({
+      key: "requestedFreeGift",
+      type: "updateAttribute",
+      value: isChecked ? "yes" : "no",
+    });
+    console.log("applyAttributeChange result", result);
+  }
 }
- 
