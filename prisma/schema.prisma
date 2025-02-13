@@ -9,8 +9,8 @@ generator client {
 // enough when changing adapters.
 // See https://www.prisma.io/docs/orm/reference/prisma-schema-reference#string for more information
 datasource db {
-  provider = "sqlite"
-  url      = "file:dev.sqlite"
+  provider = "postgresql"
+  url      = "postgres://neondb_owner:npg_8AsQZSfbX4dH@ep-ancient-snow-a4tg0l3n-pooler.us-east-1.aws.neon.tech/neondb?pgbouncer=true&connect_timeout=15&sslmode=require"
 }
 
 model Session {
