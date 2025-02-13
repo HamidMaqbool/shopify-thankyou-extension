@@ -19,9 +19,9 @@ model Session {
   state         String
   isOnline      Boolean   @default(false)
   scope         String?
-  expires       TimeStamp?
+  expires       DateTime? @db.Timestamptz
   accessToken   String
-  userId        BigInt?
+  userId        BigInt? @db.BigInt
   firstName     String?
   lastName      String?
   email         String?
