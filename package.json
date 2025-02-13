@@ -2,7 +2,8 @@
   "name": "thank-page-redirection",
   "private": true,
   "scripts": {
-    "build": "remix vite:build",
+    "build": "prisma generate && remix vite:build",
+    "postinstall": "prisma generate",
     "dev": "shopify app dev",
     "config:link": "shopify app config link",
     "generate": "shopify app generate",
@@ -23,7 +24,7 @@
     "node": "^18.20 || ^20.10 || >=21.0.0"
   },
   "dependencies": {
-    "@prisma/client": "^6.2.1",
+    "@prisma/client": "^6.3.1",
     "@remix-run/dev": "^2.15.0",
     "@remix-run/fs-routes": "^2.15.0",
     "@remix-run/node": "^2.15.0",
