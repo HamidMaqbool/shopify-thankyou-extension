@@ -1,0 +1,36 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "d2b167cdcd408d78c9755591dda2b356"
+application_url = "https://intended-bored-james-equivalent.trycloudflare.com"
+embedded = true
+name = "Thank Page Redirection"
+handle = "thank-page-redirection"
+
+[build]
+include_config_on_deploy = true
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2025-01"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://intended-bored-james-equivalent.trycloudflare.com/auth/callback",
+  "https://intended-bored-james-equivalent.trycloudflare.com/auth/shopify/callback",
+  "https://intended-bored-james-equivalent.trycloudflare.com/api/auth/callback"
+]
+
+[pos]
+embedded = false
