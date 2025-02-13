@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "d2b167cdcd408d78c9755591dda2b356"
-application_url = "https://shopify-thankyou-extension.vercel.app/"
+application_url = "https://shopify-thankyou-extension.vercel.app"
 embedded = true
 name = "Thank Page Redirection"
 handle = "thank-page-redirection"
@@ -32,5 +32,5 @@ redirect_urls = [
   "https://shopify-thankyou-extension.vercel.app/api/auth/callback"
 ]
 
-[pos] 
+[pos]
 embedded = false
