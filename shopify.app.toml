@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "d2b167cdcd408d78c9755591dda2b356"
-application_url = "https://intended-bored-james-equivalent.trycloudflare.com"
+application_url = "https://shopify-thankyou-extension.vercel.app/"
 embedded = true
 name = "Thank Page Redirection"
 handle = "thank-page-redirection"
@@ -27,9 +27,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://intended-bored-james-equivalent.trycloudflare.com/auth/callback",
-  "https://intended-bored-james-equivalent.trycloudflare.com/auth/shopify/callback",
-  "https://intended-bored-james-equivalent.trycloudflare.com/api/auth/callback"
+  "https://shopify-thankyou-extension.vercel.app/auth/callback",
+  "https://shopify-thankyou-extension.vercel.app/auth/shopify/callback",
+  "https://shopify-thankyou-extension.vercel.app/api/auth/callback"
 ]
 
 [pos] 
